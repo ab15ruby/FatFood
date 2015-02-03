@@ -17,7 +17,7 @@ class Kisi
 def sifirdan_kaydet
 					kisi = []
 				  File.read("kisiler").each_line do |line|
-						if line.split(",")[0] == @eski_ad
+						if veriler.split(",")[0] == @eski_ad
 							kisi << satir
 						else
 							kisi << line
