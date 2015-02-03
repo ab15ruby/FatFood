@@ -1,6 +1,7 @@
 require_relative "sinifler"
+
 class Okuma
-	attr_reader :kisiler
+	attr_reader :kisiler 
 	def initialize (dosya_adi)
 		@dosya_adi = dosya_adi
 		@kisiler = []
@@ -17,7 +18,8 @@ class Okuma
 			end
 		end
 	end
-private
+	
+	private
 	def kullanicilar
 		if File.exist? @dosya_adi
 			File.open(@dosya_adi, "r") do |dosya|

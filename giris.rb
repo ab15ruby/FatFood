@@ -1,9 +1,6 @@
-USERS = "deneme"
-SIFRE = "123"
-HASTALIKLAR = ["kalp", "şeker"]
-YIYECEKLER = ["1.pilav.100","2.elma.60"]
 require_relative "sinifler"
 require_relative "okumasinifi"
+
 puts "Merhaba, yapacağınız işlemi seçiniz:"
 puts "Kullanıcı girişi için : 1"
 puts "Kayıt olmak için : 2"
@@ -20,18 +17,43 @@ if islem=="1"
 		aktif_kisi = kisi
 	  end
 	end
+	
 	if aktif_kisi
-		puts "Hoşgeldin #{kullanici}"
-		puts "Menülerden yapacağınız işlemi seçebilirsiniz :)"
-		puts "Vücut Kitle İndeksi hesaplama için : 1"
-		puts "İdeal kilo hesaplama için: 2"
-		puts "Bugün ne yiyeceğini öğrenmek için : 3"
-		puts "Bilgilerinizi güncellemek için : 4"
-		islemi=gets.chomp
-		if islemi == "1"
-			puts aktif_kisi.endeks
-		elsif islemi == "3"
-					
+		loop do
+			puts "Hoşgeldin #{kullanici}"
+			puts "Menülerden yapacağınız işlemi seçebilirsiniz :)"
+			puts "Vücut Kitle İndeksi hesaplama için : 1"
+			puts "İdeal kilo hesaplama için: 2"
+			puts "Bugün ne yiyeceğini öğrenmek için : 3"
+			puts "Bilgilerinizi güncellemek için : 4"
+			puts "Çıkmak için : 5"
+			islemi=gets.chomp
+			if islemi == "1"
+			  puts aktif_kisi.endeks
+			elsif islemi == "2"
+				puts aktif_kisi.ideal
+			elsif islemi == "3"
+				gidalar = []
+				File.read("gida").each_line do |line|
+					veriler = line.chop.split(".")
+					gidalar << { id: veriler[0], ad: veriler[1], kal: veriler[2] }
+        end
+				puts "Yiyebileceğiniz gıdalar:"
+				gidalar.each do |gida|
+					dizi.each do |kisi|
+ 	  					if gida[:id] != kisi.hastalik						
+								puts gida[:ad]
+	  					end
+					end
+				end
+			elsif islemi == "4"
+				
+			elsif islemi == "5"
+				break
+			else
+				puts "Tekrar deneyiniz."
+			end
+				
 		end
 	else
 		puts "Kullanıcı adı veya şifre hatalı !"

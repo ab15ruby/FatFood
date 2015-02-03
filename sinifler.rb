@@ -12,12 +12,16 @@ class Kisi
 			dosya.puts satir
 		end
 	end
+  
 	def Kisi.satir(satir)
 		Kisi.new(satir.split(","))
 	end
 	def endeks
 		kilo_endeks
 	end	
+	def ideal
+		ideal_kilo
+	end
 
 	def self.kisiler
 		kisiler = []
@@ -30,7 +34,9 @@ class Kisi
 	end
 	private
 	def kilo_endeks
-		@kilo.to_f / (@boy.to_i**2)
+		(@kilo.to_f / ((@boy.to_f/100)**2).round(2)).round
 	end
-
+	def ideal_kilo	
+		(kilo_endeks*(@boy.to_i**2)).round
+	end
 end
